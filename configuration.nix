@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
+  
 { config, pkgs, ... }:
 
 {
@@ -84,16 +84,16 @@
   # $ nix search wget
   # use pkgs.vim instead of `with pkgs;` if desired
   environment.systemPackages = with pkgs; [
-    vim
-    htop
-    wget
+    #vim
+    #htop
+    #wget
     #git
     #git-lfs
-    google-chrome
-    firefox
-    tailscale
-    gnome3.gnome-tweaks
-    signal-desktop
+    #google-chrome
+    #firefox
+    #tailscale
+    #gnome3.gnome-tweaks
+    #signal-desktop
   ];
  
   # Removing default packages
@@ -123,6 +123,7 @@
     gnome.gnome-clocks
     gnome.gnome-calendar
     gnome.gnome-characters
+    gnome-connections
   ];
   
   # SSH Config Options
@@ -141,6 +142,7 @@
   services = {
     tailscale = {
       enable = true;
+      useRoutingFeatures = "client";
     };
   };
 

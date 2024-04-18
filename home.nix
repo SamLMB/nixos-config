@@ -18,7 +18,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    hello
+    google-chrome
+    wget
+    gnome3.gnome-tweaks
+    remmina
+    texliveFull
   ];
 
   programs = {
@@ -30,6 +34,26 @@
       aliases = {
         st = "status";
       };
+    };
+    vim = {
+      enable = true;
+      settings = {
+        expandtab = true;
+        tabstop = 4;
+        shiftwidth = 4;
+      };
+    };
+    htop = {
+      enable = true;
+    };
+    firefox = {
+      enable = true;
+    };
+    bash = {
+      enable = true;
+    };
+    vscode = {
+      enable = true;
     };
   };
 
@@ -64,7 +88,7 @@
   #  /etc/profiles/per-user/samuel/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -82,4 +106,8 @@
     templates = null;
     videos = null;
   };
+
+  targets.genericLinux.enable = true;
+  xdg.mime.enable = true;
+  nixpkgs.config.allowUnfree = true;
 }
