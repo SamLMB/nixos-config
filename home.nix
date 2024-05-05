@@ -23,6 +23,7 @@
     gnome3.gnome-tweaks
     remmina
     texliveFull
+    tree
   ];
 
   programs = {
