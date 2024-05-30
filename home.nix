@@ -34,7 +34,17 @@
       userEmail = "mathews.sam10@gmail.com";
       aliases = {
         st = "status";
+        ph = "push --all";
+        fe = "fetch --all";
+        cm = "commit -m";
+        pl = "pull --all";
       };
+    };
+    bash = {
+      shellAliases = {
+        htp = "htop";
+      };
+      initExtra = "source ${./functions.sh}";
     };
     vim = {
       enable = true;
