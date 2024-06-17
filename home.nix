@@ -22,9 +22,10 @@
     wget
     gnome3.gnome-tweaks
     remmina
-    texliveFull
     tree
+    signal-desktop
   ];
+  # texliveFull
 
   programs = {
     git = {
