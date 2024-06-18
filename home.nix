@@ -39,6 +39,8 @@
         fe = "fetch --all";
         cm = "commit -m";
         pl = "pull --all";
+        br = "branch -a";
+        co = "checkout";
       };
     };
     bash = {
