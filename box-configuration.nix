@@ -1,22 +1,22 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-  
+
 { config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./lenovo-hardware-configuration.nix
+      ./box-hardware-configuration.nix
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "lenovo"; # Define your hostname.
+  networking.hostName = "box"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  hardware.enableRedistributableFirmware = true;  
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -50,7 +50,6 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -68,7 +67,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   
-  nix.nixPath = [ "/home/samuel/nixos-config/lenovo-configuration.nix" ];
+  nix.nixPath = [ "/home/samuel/nixos-config/box-configuration.nix" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.samuel = {
@@ -84,10 +83,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # use pkgs.vim instead of `with pkgs;` if desired
   environment.systemPackages = with pkgs; [
   ];
- 
+
   # Removing default packages
   services.xserver.excludePackages = [ pkgs.xterm ];
   services.xserver.desktopManager.xterm.enable = false;
@@ -117,7 +115,7 @@
     gnome.gnome-characters
     gnome-connections
   ];
-  
+
   # SSH Config Options
   programs.ssh.extraConfig = "IdentitiesOnly yes";
 
